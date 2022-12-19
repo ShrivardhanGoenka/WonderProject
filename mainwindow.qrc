@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>add-camera.png</file>
+        <file>loader1.gif</file>
+        <file>logo.png</file>
+    </qresource>
+    <qresource prefix="/"/>
+</RCC>
