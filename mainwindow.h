@@ -39,11 +39,13 @@ private slots:
     void on_connect_clicked();
     void timertimeout();
     void closeTab(const int& index);
+    void tabSelected(int);
 
 private:
     Ui::MainWindow *ui;
     vector<Camera*> cameras;
     QTimer* maintimer;
+    int currenttab = -1;
 };
 
 #endif // MAINWINDOW_H

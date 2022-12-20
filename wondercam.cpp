@@ -33,14 +33,14 @@ void WonderCam::inittab(QWidget* tab){
     liveLabel->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
     liveLabel->setMinimumSize(0,0);
     liveLabel->setMaximumSize(700,600);
-    liveLabel->setStyleSheet(        "border:1px solid black;"
+    liveLabel->setStyleSheet(        "border:1px solid white;"
                                      "border-radius: 5px;");
     liveLabelC = new QLabel();
     liveLabelC->setObjectName(QString(camName+"livestreamc"));
     liveLabelC->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
     liveLabelC->setMinimumSize(0,0);
     liveLabelC->setMaximumSize(700,600);
-    liveLabelC->setStyleSheet(        "border:1px solid black;"
+    liveLabelC->setStyleSheet(        "border:1px solid white;"
                                      "border-radius: 5px;");
     tabgridlayout = new QGridLayout;
     tabgridlayout->addWidget(liveLabel);
@@ -58,14 +58,14 @@ void WonderCam::inittab(QWidget* tab){
                               "QRadioButton"
                               "{"
                               "    background: transparent;"
-                              "               color: black;"
+                              "               color: white;"
                               "}"
                               ).arg(25));
     qrbCap->setStyleSheet(QString(
                               "QRadioButton"
                               "{"
                               "    background: transparent;"
-                              "               color: black;"
+                              "               color: white;"
                               "}"
                               ).arg(25));
     tabgridlayout->addLayout(radioLayout, 1,0);
@@ -88,6 +88,9 @@ void WonderCam::inittab(QWidget* tab){
     captureC.open(rtspC);
 
     SetAlarmCallBack(pHandle,devInfo,PtzAlarmCallBack,parent);
+
+    //connect(&WonderCam::instance(),&WonderCam::recordSignal,*parent,&WonderCam::recordAlarms);
+    //connect(&WonderCam::instance(),&WonderCam::captureSignal,*parent,&WonderCam::captureAlarms);
 }
 
 void WonderCam::onRadioButtonToggled(){

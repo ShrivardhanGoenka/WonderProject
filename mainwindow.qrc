@@ -3,6 +3,7 @@
         <file>add-camera.png</file>
         <file>loader1.gif</file>
         <file>logo.png</file>
+        <file>Darkeum.qss</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>

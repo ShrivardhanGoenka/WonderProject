@@ -7,7 +7,6 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include "camera.h"
-#include "mainwindow.h"
 #include "qgridlayout.h"
 #include "qlabel.h"
 #include <QRadioButton>

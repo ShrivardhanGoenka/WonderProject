@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->tabWidget->setTabsClosable(true);
     connect(ui->tabWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
+    connect(ui->tabWidget, SIGNAL(currentChanged(int)), this, SLOT(tabSelected()));
 }
 
 MainWindow::~MainWindow()
@@ -46,21 +47,22 @@ void MainWindow::on_connect_clicked()
         cameras.push_back(cam);
     }
     else if(obj->type == 2){
-
+        Camera* cam = new Camera();
+        cameras.push_back(cam);
     }
 
 
 }
 
 void MainWindow::timertimeout(){
-    int index = ui->tabWidget->currentIndex();
-    cameras[index]->updateTab();
+    if(currenttab==-1) return;
+    cameras[currenttab]->updateTab();
 }
 
-void MainWindow::closeTab(const int& index){
-    if(index==-1) return;
+void MainWindow::closeTab(const int& indexofcam){
+    if(indexofcam==-1) return;
 
-    QWidget* widget = ui->tabWidget->widget(index);
+    QWidget* widget = ui->tabWidget->widget(indexofcam);
     QString name = widget->objectName();
 
     //remove camera confirmation
@@ -68,10 +70,14 @@ void MainWindow::closeTab(const int& index){
     reply = QMessageBox::question(this, "Disconnect Camera", QString("Are you sure you want to disconnect camera "+ name), QMessageBox::Yes|QMessageBox::No);
 
     if(reply==QMessageBox::Yes){
-        Camera* cam = cameras[index];
+        Camera* cam = cameras[indexofcam];
         cam->closetab();
-        cameras.erase(cameras.begin()+index);
+        cameras.erase(cameras.begin()+indexofcam);
         delete cam;
-        ui->tabWidget->removeTab(index);
+        ui->tabWidget->removeTab(indexofcam);
     }
+}
+
+void MainWindow::tabSelected(int index){
+    currenttab = index;
 }

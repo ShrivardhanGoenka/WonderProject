@@ -6,8 +6,8 @@ ipDialog::ipDialog(QWidget *parent) :
     ui(new Ui::ipDialog)
 {
     ui->setupUi(this);
-    ui->usernameEdit->insert("admin");
-    ui->passwordEdit->insert("123456");
+    ui->usernameEdit->insert("Username");
+    ui->passwordEdit->insert("Password");
     ui->ipEdit->addItem("192.168.1.108");
 
     //Adding all the camera types
